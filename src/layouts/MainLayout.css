@@ -1,0 +1,29 @@
+.main-layout {
+  background-color: var(--color-neutral-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+  The navbar is fixed at 70px height.
+  We use padding-top on main-layout itself to push
+  ALL content below the navbar — this is more reliable
+  than margin-top on content-area.
+*/
+.main-layout {
+  padding-top: 70px;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  min-height: calc(100vh - 70px);
+}
+
+@media (min-width: 1024px) {
+  .content-area {
+    padding-left: var(--spacing-2xl);
+    padding-right: var(--spacing-2xl);
+  }
+}

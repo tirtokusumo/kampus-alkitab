@@ -1,0 +1,68 @@
+# Audit Ekstensif Web App Kampus Alkitab
+
+Berikut adalah hasil audit komprehensif terkait hal-hal yang perlu **ditambah, direvisi, dan diperbaiki** untuk mencapai titik kesempurnaan (Production-Ready) sebagai sebuah Web Application modern, interaktif, dan berskala besar.
+
+---
+
+## 1. Sistem Autentikasi & Akun
+**Kondisi Saat Ini**: Form Login & Register sudah fungsional secara UI dan memiliki mock state.
+**Perbaikan & Penambahan**:
+- **Validasi Form Cerdas**: Integrasi Form Validation (e.g., React Hook Form + Yup) untuk mengecek keamanan sandi (minimum karakter, simbol) dan format email *sebelum* disubmit.
+- **Lupa Kata Sandi (Forgot Password)**: Alur pemulihan akun via tautan reset email sama sekali belum ada.
+- **Login Sosial (OAuth)**: Tambahkan tombol *Single Sign-On* seperti "Masuk dengan Google" atau "Masuk dengan Facebook" untuk mempercepat on-boarding jemaat.
+- **Halaman Pengaturan Akun (`/settings`)**: Member membutuhkan halaman untuk mengubah foto profil (avatar), nama, preferensi notifikasi, dan reset password dari dalam dashboard.
+
+## 2. Navigasi & Navbar (Dinamis)
+**Kondisi Saat Ini**: Terdapat 2 navbar (Public & Member) yang berpindah sesuai status login.
+**Perbaikan & Penambahan**:
+- **Smart CTA**: Pada landing page, tombol "Masuk" dan "Daftar Gratis" di Navbar publik harus berubah menjadi avatar pengguna dan tombol "Lanjut Belajar" atau "Ke Dashboard" apabila user tersebut sebenarnya sedang dalam *state terlogin*.
+- **Notifikasi Global**: Ikon lonceng di Navbar perlu dihubungkan dengan pop-over menu untuk menampilkan alert sistem (contoh: "Kelas baru ditambahkan!", "Sertifikat Anda telah terbit!").
+
+## 3. Katalog Kelas & Pencarian (`/courses`)
+**Kondisi Saat Ini**: UI pencarian dan filter sudah berjalan baik.
+**Perbaikan & Penambahan**:
+- **Skeleton Loader**: Transisi pergantian data saat user mengetik di kotak pencarian atau memfilter kategori butuh *skeleton loading state* 1-2 detik agar pengalaman terasa seperti menarik data dari server asli.
+- **Pagination / Infinite Scroll**: Terutama jika jumlah kursus sudah membesar (50+ kelas), tidak bisa merender semua dalam 1 halaman. Harus memuat kelas per-halaman.
+
+## 4. Player Kelas Gaya Udemy (`/course/:id`)
+**Kondisi Saat Ini**: Layout edge-to-edge dengan sistem tab (Modul, Q&A, Catatan) sudah interaktif.
+**Perbaikan & Penambahan**:
+- **Progress Tracking Otomatis**: Saat selesai memutar 1 video materi, sistem otomatis menandai "Selesai" pada modul tersebut, menambahkan persentase *progress bar*, dan melompat memutar (Auto-play) video berikutnya.
+- **State Catatan Personal**: Tab "Catatan Pribadi" saat ini reset ketika direfresh. Wajib diintegrasikan dengan `localStorage` atau *Database User* sehingga ketikan jemaat tersimpan selamanya.
+
+## 5. Renungan & Ekosistem Bacaan (`/renungan`)
+**Kondisi Saat Ini**: Halaman detail bacaan renungan yang estetis layaknya medium.com.
+**Perbaikan & Penambahan**:
+- **Mode Gelap (Readability Mode)**: Tombol *toggle* di halaman bacaan untuk mengubah warna kertas menjadi gelap sepenuhnya, ideal bagi jemaat yang bersaat teduh pagi buta atau tengah malam.
+- **Database Interaksi**: Tombol "Berkatilah Saya (Like)" belum terhubung ke penghitungan jumlah tayang secara real, butuh arsitektur backend untuk mengakumulasi angka live.
+- **Audio Devotional**: Pertimbangkan _Floating Audio Player_ yang membacakan otomatis (Voice Over) narasi text renungan tersebut.
+
+## 6. Study Bible Club & Acara (`/acara/study-bible-club`)
+**Kondisi Saat Ini**: Layout live-streaming dan Live Chat menawan menyerupai platform broadcast modern.
+**Perbaikan & Penambahan**:
+- **Integrasi Video Platform Asli**: Video thumbnail harus disambungkan dengan embed *YouTube Live* atau *Zoom Web SDK* agar jemaat benar-benar bisa menekan "Play" di sana, bukan ditendang keluar tab.
+- **Real-Time Websocket Chat**: Percakapan di panel kanan mutlak harus disokong *WebSockets* (seperti Firebase Realtime Database) agar pesan baru dari jemaat lain dapat muncul di layar tanpa refresh.
+- **Kalender ICS Download**: Pada bagian reminder sesi mendatang, tambahkan fitur sinkronisasi dengan Google Calendar pengguna (.ics format).
+
+## 7. Komunitas & Ministry Hub (`/community`, `/ministry-hub`)
+**Kondisi Saat Ini**: Daftar role volunteer dan beranda diskusi.
+**Perbaikan & Penambahan**:
+- **Nested Comments**: Saat ini struktur forum masih level 1 (Komentar utama saja). Perlu arsitektur *threaded comments* (balas-membalas).
+- **Rich Text Editor / Teks Formatting**: Form input untuk diskusi membutuhkan *toolbar* ringan (Bold, Italic, Sisipkan Ayat Alkitab otomatis).
+- **Sistem Lencana & Moderasi**: Implementasi sistem role forum otomatis berdasarkan keaktifan (Contoh role: "Contributor", "Theologian", "Admin/Pastor").
+
+## 8. Toko Sumber Daya & Checkout (`/toko`, `/checkout`)
+**Kondisi Saat Ini**: Keranjang belanja berhasi kalkulasi total beserta metode pembayaran QRIS & Bank.
+**Perbaikan & Penambahan**:
+- **Integrasi Payment Gateway (Midtrans / Xendit)**: Checkout saat ini menembak state kesuksesan palsu. Harus menginisasi *Snap window Midtrans* untuk konfirmasi bank nyata.
+- **Pengiriman (Ekspedisi)**: Untuk pembelian buku fisik/merchandise, panel checkout wajib diperlengkapi API cek resi (RajaOngkir) kalkulasi berat berbanding lokasi kecamatan alamat pengguna.
+- **Tracking Sistem Pembelian**: Di dalam member area butuh section "Status Pesanan: Dikemas / Dikirim / Link Digital Bisa Diunduh".
+
+## 9. Sistem Global (Tech Debt & UX Polishing)
+- **Toast Alerts Mengganti Native Alert()**: Semua sisa notifikasi seperti `alert('Fitur belum tersedia')` di tombol-tombol harus segera diganti dengan sistem `Toast` modern (notifikasi pop-up estetik di pojok atas/bawah layar).
+- **Routing Transition (Framer Motion)**: Perpindahan antar url page masih kaku memotong tiba-tiba. Menyematkan library animasi perpindahan layar.
+- **SEO & Meta Helmet**: Pada page `/renungan/:id` maupun `/courses/:param`, URL bisa dirender secara dinamis. Pemasangan `React Helmet` dibutuhkan agar thumbnail saat di-*share* ke Whatsapp (OpenGraph) berubah dinamis menampilkan thumbnail kursus/renungan masing-masing.
+
+---
+**Kesimpulan Proyek**: 
+Langkah krusial berikutnya untuk mengalirkan nyawa "Web App Sebenarnya" ke aplikasi ini adalah **Database Migration (Backend as a Service)** seperti *Supabase* atau *Firebase* untuk menggantikan statik file `.jsx` data, dan penarikan integrasi **Midtrans API** untuk payment produk di halaman Store/Keranjang.

@@ -1,0 +1,277 @@
+.bible-page-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px - 4rem); /* Viewport height minus navbar and layout padding */
+  animation: fadeUp 0.3s ease-out forwards;
+}
+
+.bible-header {
+  background-color: var(--color-neutral-surface);
+  padding: 12px 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-neutral-border);
+  margin-bottom: var(--spacing-lg);
+}
+
+.bible-selector {
+  background-color: var(--color-neutral-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-border);
+  overflow: hidden;
+}
+
+.bible-selector select {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  outline: none;
+}
+
+.bible-selector select.version-select {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.bible-selector .separator {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-neutral-border);
+}
+
+.bible-actions .search-box {
+  background-color: var(--color-neutral-bg);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  border: 1px solid var(--color-neutral-border);
+}
+
+.bible-actions .search-box input {
+  border: none;
+  background: transparent;
+  padding-left: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  width: 200px;
+}
+
+.icon-btn.active {
+  background-color: rgba(26, 35, 126, 0.1);
+  color: var(--color-primary);
+}
+
+/* Content Layout */
+.bible-content-wrapper {
+  display: flex;
+  flex: 1;
+  gap: var(--spacing-lg);
+  overflow: hidden; /* Prevent scrolling the whole layout */
+}
+
+.reading-pane {
+  flex: 1;
+  background-color: var(--color-neutral-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  border: 1px solid var(--color-neutral-border);
+  box-shadow: var(--shadow-sm);
+  overflow-y: auto;
+}
+
+.study-tools-pane {
+  width: 380px;
+  background-color: var(--color-neutral-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-neutral-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Reading Experience */
+.chapter-header {
+  margin-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid var(--color-neutral-border);
+  padding-bottom: var(--spacing-md);
+}
+
+.chapter-header h2 {
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.nav-arrow {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow:hover {
+  background-color: var(--color-neutral-bg);
+  color: var(--color-primary);
+}
+
+.verses-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.verse-row {
+  margin-bottom: 12px;
+  padding: 6px 8px;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.verse-row:hover {
+  background-color: var(--color-neutral-bg);
+}
+
+.verse-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary-dark);
+  min-width: 24px;
+  padding-top: 4px;
+  user-select: none;
+}
+
+.verse-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+/* Study Tools */
+.tools-tabs {
+  border-bottom: 1px solid var(--color-neutral-border);
+  margin-bottom: var(--spacing-md);
+}
+
+.tool-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.tool-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.tool-card {
+  background-color: var(--color-neutral-bg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-neutral-border);
+}
+
+.tool-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary-dark);
+}
+
+.commentary-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.commentary-text p {
+  margin-bottom: 8px;
+}
+
+.notes-area-small {
+  width: 100%;
+  height: 120px;
+  resize: vertical;
+  border: 1px solid var(--color-neutral-border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-family: var(--font-family-base);
+  font-size: 0.9rem;
+}
+
+.notes-area-small:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.btn-sm {
+  padding: 6px 16px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .bible-content-wrapper {
+    flex-direction: column;
+    overflow: visible;
+  }
+  
+  .bible-page-layout {
+    height: auto;
+  }
+  
+  .study-tools-pane {
+    width: 100%;
+  }
+}
+
+/* Bookmarks bar */
+.bible-bookmarks-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: #fef9ec;
+  border: 1px solid #f59e0b44;
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  margin-bottom: var(--spacing-md);
+  font-size: 0.82rem;
+  color: #92400e;
+}
+
+.bookmark-chip {
+  background: #f59e0b22;
+  border: 1px solid #f59e0b66;
+  border-radius: var(--radius-full);
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #92400e;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.bookmark-chip:hover { background: #f59e0b44; }
+
+/* Disabled nav arrow */
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.nav-arrow:disabled:hover {
+  background: none;
+  color: var(--color-text-secondary);
+}
+

@@ -1,0 +1,554 @@
+/* ── Course Detail Page ── */
+.course-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ── Hero Section ── */
+.cd-hero {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  padding: 32px 0 40px;
+  align-items: start;
+}
+
+.cd-hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cd-breadcrumb-zone {
+  margin-bottom: 4px;
+}
+
+.cd-category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  color: #3730a3;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  width: fit-content;
+}
+
+.cd-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.cd-subtitle {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.cd-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cd-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.cd-meta-item svg {
+  flex-shrink: 0;
+}
+
+.cd-rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.cd-rating-num {
+  font-weight: 700;
+  color: #f59e0b;
+  font-size: 0.95rem;
+}
+
+.cd-instructor-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.cd-instructor-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.cd-instructor-info h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.cd-instructor-info span {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+/* ── Sticky Card ── */
+.cd-sticky-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 24px;
+}
+
+.cd-card-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cd-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.cd-card-preview:hover img {
+  transform: scale(1.05);
+}
+
+.cd-card-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cd-card-preview:hover .cd-card-play-overlay {
+  opacity: 1;
+}
+
+.cd-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cd-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.cd-price {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a237e;
+}
+
+.cd-old-price {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.cd-discount-tag {
+  padding: 3px 10px;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.cd-cta-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s;
+}
+
+.cd-cta-btn.primary {
+  background: linear-gradient(135deg, #1a237e, #283593);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(26, 35, 126, 0.3);
+}
+
+.cd-cta-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 35, 126, 0.4);
+}
+
+.cd-cta-btn.outline {
+  background: transparent;
+  border: 2px solid #e2e8f0;
+  color: #334155;
+}
+
+.cd-cta-btn.outline:hover {
+  border-color: #1a237e;
+  color: #1a237e;
+}
+
+.cd-card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cd-card-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.cd-card-feature svg {
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+/* ── Tabs Section ── */
+.cd-tabs-section {
+  margin-top: 40px;
+}
+
+.cd-tabs-nav {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+
+.cd-tab-btn {
+  padding: 12px 24px;
+  border: none;
+  background: none;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.cd-tab-btn:hover {
+  color: #1a237e;
+}
+
+.cd-tab-btn.active {
+  color: #1a237e;
+  border-bottom-color: #1a237e;
+}
+
+/* ── Syllabus ── */
+.cd-syllabus {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cd-module {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.cd-module:hover {
+  border-color: #c7d2fe;
+}
+
+.cd-module-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8fafc;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.cd-module-header:hover {
+  background: #eef2ff;
+}
+
+.cd-module-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.9rem;
+}
+
+.cd-module-badge {
+  padding: 2px 8px;
+  background: #1a237e;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.cd-module-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.cd-module-lessons {
+  padding: 0 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cd-lesson {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  color: #334155;
+  transition: background 0.15s;
+}
+
+.cd-lesson:hover {
+  background: #f1f5f9;
+}
+
+.cd-lesson svg {
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.cd-lesson-duration {
+  margin-left: auto;
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+/* ── Overview ── */
+.cd-overview {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.75;
+}
+
+.cd-overview h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 24px 0 12px;
+}
+
+.cd-overview h3:first-child {
+  margin-top: 0;
+}
+
+.cd-learn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 12px 0 24px;
+}
+
+.cd-learn-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  color: #334155;
+}
+
+.cd-learn-item svg {
+  color: #22c55e;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Reviews ── */
+.cd-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cd-review-summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 14px;
+}
+
+.cd-review-big-num {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #f59e0b;
+  line-height: 1;
+}
+
+.cd-review-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cd-review-stars-row {
+  display: flex;
+  gap: 3px;
+}
+
+.cd-review-count {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.cd-review-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.cd-review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cd-review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #4338ca;
+  font-size: 0.9rem;
+}
+
+.cd-review-name {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.88rem;
+}
+
+.cd-review-date {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.cd-review-text {
+  font-size: 0.87rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .cd-hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cd-sticky-card {
+    position: static;
+    max-width: 500px;
+  }
+
+  .cd-title {
+    font-size: 1.6rem;
+  }
+
+  .cd-learn-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .course-detail-page {
+    padding: 0 14px 40px;
+  }
+
+  .cd-hero {
+    padding: 20px 0 24px;
+  }
+
+  .cd-title {
+    font-size: 1.35rem;
+  }
+
+  .cd-tabs-nav {
+    gap: 0;
+  }
+
+  .cd-tab-btn {
+    padding: 10px 16px;
+    font-size: 0.82rem;
+  }
+
+  .cd-review-summary {
+    flex-direction: column;
+    text-align: center;
+  }
+}

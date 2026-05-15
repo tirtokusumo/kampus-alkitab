@@ -1,0 +1,356 @@
+/* CertificationDetail.css */
+
+.certd-page {
+  min-height: calc(100vh - 70px);
+  background: #f8fafc;
+}
+
+/* ── HERO ── */
+.certd-hero {
+  position: relative;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 48px 5%;
+}
+
+.certd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.3) 100%);
+}
+
+.certd-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.certd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.certd-back:hover { color: white; }
+
+.certd-hero-badge {
+  display: inline-block;
+  color: white;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.certd-hero-title {
+  color: white;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.certd-hero-desc {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 0 24px;
+}
+
+.certd-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.certd-hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 14px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+/* ── MAIN CONTENT ── */
+.certd-main {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 5% 60px;
+}
+
+.certd-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.certd-left {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.certd-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.certd-section h2 svg { color: #4f46e5; }
+
+.certd-long-desc {
+  color: #334155;
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+/* Features */
+.certd-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.certd-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: white;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.certd-feature-item svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Benefits */
+.certd-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.certd-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.certd-benefit-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Curriculum */
+.certd-curriculum {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.certd-module-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  transition: box-shadow 0.15s;
+}
+
+.certd-module-row:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+.certd-module-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+.certd-module-title {
+  flex: 1;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.certd-module-hours {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* Testimonials */
+.certd-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.certd-testimonial-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #4f46e5;
+}
+
+.certd-testimonial-quote {
+  color: #334155;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.certd-testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.certd-testimonial-author strong {
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.certd-testimonial-author span {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+/* ── SIDEBAR ── */
+.certd-sidebar {
+  position: relative;
+}
+
+.certd-sidebar-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 100px;
+}
+
+.certd-sidebar-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.certd-sidebar-body {
+  padding: 24px;
+}
+
+.certd-price {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 20px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.certd-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.certd-sidebar-info > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.certd-sidebar-info > div svg {
+  color: #6366f1;
+  flex-shrink: 0;
+}
+
+.certd-enroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.certd-enroll-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79,70,229,0.3);
+  filter: brightness(1.1);
+}
+
+.certd-sidebar-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 16px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .certd-grid { grid-template-columns: 1fr; gap: 32px; }
+  .certd-hero-title { font-size: 1.8rem; }
+  .certd-features-grid { grid-template-columns: 1fr; }
+  .certd-hero { min-height: 350px; }
+}

@@ -1,0 +1,30 @@
+==================================================
+KREDENSIAL AKSES - KAMPUS ALKITAB (BACKEND ASLI)
+==================================================
+
+Sistem saat ini sudah menggunakan database asli (SQLite) 
+di dalam folder /server. 
+
+Informasi Akses:
+--------------------------------------------------
+1. AKUN SUPERADMIN (BAWAAN):
+   Email : admin@kampusalkitab.com
+   Sandi : admin123
+   (Digunakan untuk mengelola CMS dan pengaturan situs)
+
+2. PENDAFTARAN MEMBER:
+   Pengguna baru dapat mendaftar langsung melalui menu 
+   "Daftar di sini" pada halaman Login. Akun yang 
+   terdaftar akan otomatis tersimpan permanen di 
+   database server.
+
+3. TEKNOLOGI BACKEND:
+   - Server   : Node.js + Express
+   - Database : SQLite (better-sqlite3)
+   - Jalur API: http://localhost:3001/api
+   - Keamanan : JWT & Hashing Passwords (Bcrypt)
+
+Catatan: 
+Pastikan server backend dinyalakan via 'node server/index.js' 
+agar fitur Login, Register, dan CMS berfungsi dengan baik.
+==================================================

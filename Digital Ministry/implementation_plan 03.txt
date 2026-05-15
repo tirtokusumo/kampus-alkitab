@@ -1,0 +1,140 @@
+# CMS Kampus Alkitab — Phase 1 (Fondasi)
+
+Plan ini difokuskan pada **fondasi CMS** yang bisa diselesaikan dalam satu sesi dan **tidak mengganggu website yang sudah berjalan**. Semua perubahan bersifat **additive** — hanya menambah file dan route baru, tanpa mengubah halaman publik yang sudah ada.
+
+## Prinsip Keamanan
+
+> [!TIP]
+> **Zero-breaking-change approach:**
+> - Semua file CMS baru, tidak ada file lama yang dihapus
+> - Landing Page & halaman publik lainnya **tidak diubah** di Phase 1
+> - Admin panel adalah route terpisah (`/admin`) yang tidak mempengaruhi UX publik
+> - Phase berikutnya (menghubungkan CMS ke halaman publik) bisa dilakukan kapan saja
+
+## Scope Phase 1
+
+| Yang dikerjakan ✅ | Yang ditunda ⏳ |
+|---|---|
+| Admin Layout + Dashboard | Membuat Landing Page dinamis |
+| Page Manager (CRUD) | Block Editor visual (drag-drop) |
+| Menu Builder (header & footer) | Dynamic rendering di halaman publik |
+| Theme/Color Settings | Supabase integration |
+| Site Settings (logo, nama, tagline) | Media Manager (upload gambar) |
+| CMS Data Layer (localStorage) | Multi-page block editing |
+| Admin Route Protection | — |
+
+## Proposed Changes
+
+### 1. CMS Data Layer
+
+#### [NEW] `src/cms/cmsData.js`
+- Default data: site settings, menus, pages list, theme colors
+- CRUD helpers: `getCmsData()`, `saveCmsData()`, `updateSiteSettings()`, `updateMenus()`, `updateTheme()`, `addPage()`, `updatePage()`, `deletePage()`
+- Data disimpan di localStorage, load otomatis saat app start
+
+#### [NEW] `src/cms/CmsContext.jsx`
+- React Context + Provider untuk data CMS
+- Auto-load dari localStorage
+- Menyediakan semua fungsi update ke admin components
+
+---
+
+### 2. Admin Panel (6 files baru)
+
+#### [NEW] `src/pages/admin/AdminLayout.jsx`
+- Sidebar navigation: Dashboard, Pages, Menus, Theme, Settings
+- Dark sidebar + light content area
+- Responsive
+
+#### [NEW] `src/pages/admin/AdminDashboard.jsx`
+- Overview cards (total pages, menu items)
+- Quick links ke setiap section
+
+#### [NEW] `src/pages/admin/PageManager.jsx`
+- Tabel list semua halaman
+- Tombol Add, Edit title/slug/status, Delete
+- Status badge: Published / Draft
+
+#### [NEW] `src/pages/admin/MenuBuilder.jsx`
+- Edit Header menu & Footer menu
+- Add/remove/reorder item + sub-items
+- Edit label dan URL per item
+
+#### [NEW] `src/pages/admin/ThemeSettings.jsx`
+- Color picker untuk 6 warna utama (primary, secondary, accent + light/dark variants)
+- Live preview swatch
+- Reset ke default
+- Inject ke CSS variables secara real-time
+
+#### [NEW] `src/pages/admin/SiteSettings.jsx`
+- Edit nama situs, tagline, copyright text
+- Edit logo URL
+- Social media links (Instagram, YouTube, Facebook, WhatsApp)
+
+#### [NEW] `src/pages/admin/admin.css`
+- Styling lengkap untuk admin panel
+- Premium dark sidebar design
+
+---
+
+### 3. Perubahan Minimal pada File Existing
+
+#### [MODIFY] `src/context/AuthContext.jsx`
+- Tambah role detection: email `admin@kampusalkitab.com` → role `superadmin`
+- Tambah fungsi `isAdmin` di context
+- **Tidak mengubah** behavior login yang sudah ada
+
+#### [NEW] `src/components/AdminRoute.jsx`
+- Wrapper component: cek `user.role === 'superadmin'`, redirect jika bukan
+
+#### [MODIFY] `src/App.jsx`
+- Wrap dengan `CmsProvider`
+- Tambah route group `/admin/*` dengan AdminRoute protection
+- Tambah effect untuk inject theme CSS variables
+- **Semua route existing tidak berubah**
+
+## File Summary
+
+| File | Status | Risiko |
+|------|--------|--------|
+| `src/cms/cmsData.js` | NEW | Tidak ada — file baru |
+| `src/cms/CmsContext.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/AdminLayout.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/AdminDashboard.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/PageManager.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/MenuBuilder.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/ThemeSettings.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/SiteSettings.jsx` | NEW | Tidak ada — file baru |
+| `src/pages/admin/admin.css` | NEW | Tidak ada — file baru |
+| `src/components/AdminRoute.jsx` | NEW | Tidak ada — file baru |
+| `src/context/AuthContext.jsx` | MODIFY | **Rendah** — hanya tambah field role |
+| `src/App.jsx` | MODIFY | **Rendah** — hanya tambah routes & provider |
+
+> [!NOTE]
+> **Total: 10 file baru + 2 file dimodifikasi (perubahan kecil)**
+> Tidak ada file yang dihapus. Semua halaman publik tetap berfungsi normal.
+
+## Cara Pakai Nanti
+
+1. Buka `/login`, masuk dengan email `admin@kampusalkitab.com` + password apapun
+2. Otomatis diarahkan ke `/admin`
+3. Dari dashboard, kelola Pages, Menu, Warna, dan Settings
+4. Perubahan tema (warna) langsung diterapkan di seluruh website
+
+## Roadmap Phase Selanjutnya
+
+| Phase | Isi | Prasyarat |
+|-------|-----|-----------|
+| **Phase 2** | Block Editor visual + hubungkan CMS data ke Landing Page | Phase 1 selesai |
+| **Phase 3** | Media Manager (upload gambar) + hubungkan ke halaman lain | Phase 2 selesai |
+| **Phase 4** | Migrasi ke Supabase (database + storage) | Supabase credentials ready |
+
+## Verification Plan
+
+### Browser Testing
+1. Login normal (bukan admin) → akses `/admin` → harus redirect ke `/`
+2. Login sebagai `admin@kampusalkitab.com` → akses `/admin` → berhasil masuk
+3. Navigasi semua section CMS (Pages, Menu, Theme, Settings)
+4. Ubah warna primary → verifikasi CSS berubah di halaman publik
+5. Tambah page → verifikasi muncul di tabel
+6. Edit menu → verifikasi data tersimpan di localStorage

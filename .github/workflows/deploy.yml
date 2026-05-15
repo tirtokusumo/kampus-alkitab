@@ -1,0 +1,42 @@
+name: Deploy React Vite to Hostinger
+
+on:
+  push:
+    branches:
+      - main # Jalankan otomatis setiap ada push ke branch 'main'
+
+jobs:
+  web-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout kode dari GitHub
+    - name: Get latest code
+      uses: actions/checkout@v4
+      
+    # 2. Persiapkan Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Gunakan versi Node.js terbaru/stabil
+        cache: 'npm'
+
+    # 3. Instal semua dependencies
+    - name: Install dependencies
+      run: npm ci # Gunakan npm ci untuk instalasi yang lebih bersih dan cepat dari package-lock.json
+
+    # 4. Build aplikasi React (Vite)
+    - name: Build project
+      run: npm run build
+      
+    # 5. Upload hasil build (folder 'dist') ke Hostinger via FTP
+    - name: Sync files to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/ # Folder hasil build Vite yang akan diupload
+        server-dir: ./public_html/ # Folder tujuan di Hostinger (bisa disesuaikan jika hosting berada di subfolder)
+        dangerous-clean-slate: false # Set ke true JIKA Anda ingin menghapus file lama di server yang tidak ada di lokal

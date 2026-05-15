@@ -1,0 +1,96 @@
+# 📑 MASTER PLAN: KAMPUS ALKITAB - ECCLESIA LEARNING NETWORK (ELN)
+
+> **Positioning Statement:** "Ecclesia Learning Network adalah platform terintegrasi untuk membentuk murid Kristus yang dewasa, pelayan yang kompeten, dan komunitas Iman yang bertumbuh melalui teknologi modern."
+
+---
+
+## 🎯 1. VISI, MISI, DAN NILAI INTI
+* **Visi:** Menjadi platform pendidikan rohani Kristen digital terdepan dalam membentuk murid Kristus yang matang, kompeten, dan berdampak bagi dunia.
+* **Misi:** * Menyediakan pendidikan rohani berkualitas tinggi untuk semua usia.
+    * Memperlengkapi guru, pembina, konselor, dan pelayan Tuhan.
+    * Mengintegrasikan iman, teologi, pelayanan, dan kehidupan praktis.
+    * Membangun komunitas pertumbuhan iman berkelanjutan.
+    * Menggunakan teknologi untuk memperluas Amanat Agung.
+* **Nilai (Values):** Kesetiaan Alkitab, Integritas pelayanan, Keunggulan akademik, Inovasi teknologi, Kasih dan pemuridan.
+
+---
+
+## 📚 2. LMS PENDIDIKAN ROHANI (CORE PRODUCT)
+
+### A. Kurikulum Berdasarkan Segmen Usia
+1. **Kids (Sekolah Minggu):** * Materi: Video Alkitab interaktif, Gamifikasi rohani, *Memory verse system*, dan *Parent dashboard*.
+2. **Remaja (Youth):** * Fokus: *Identity in Christ*, *Purity & character*, *Apologetics basic*, dan *Leadership*.
+3. **Pemuda:** * Fokus: *Calling & purpose*, *Theology foundations*, *Ministry skills*, dan *Christian worldview*.
+4. **Dewasa:** * Fokus: *Biblical literacy*, *Family & marriage*, *Finance & stewardship*, serta *Leadership & ministry*.
+
+### B. Sertifikasi Pelayan Tuhan
+Program sertifikasi berjenjang (Level 1–4) untuk kompetensi pelayanan:
+* **Certified Sunday School Teacher:** Level 1–3.
+* **Youth & Teen Ministry Coach:** Level 1–3.
+* **Christian Counselor:** Level 1–4.
+* **Pastoral Care Specialist:** Level 1–3.
+* **Worship & Creative Ministry:** Level 1–2.
+* **Theology & Apologetics:** Level 1–3.
+
+---
+
+## 📖 3. BIBLE STUDY TOOLS (TECHNOLOGY DIFFERENTIATOR)
+Alat bantu penggalian Alkitab modern yang terintegrasi langsung dalam ekosistem:
+* **Fitur Utama:** Multi-versi Alkitab, *Interlinear Greek–Hebrew*, *Commentary*, dan *Cross-reference*.
+* **Fitur Lanjutan:** *Study notes & highlight*, *Sermon preparation tools*, AI Bible Study Assistant, dan *Devotional planner*.
+
+---
+
+## 🤝 4. KOMUNITAS DAN PORTAL PELAYANAN
+
+### A. Platform Komunitas
+* **Fitur:** Forum Firman Tuhan, *Small group digital*, Mentorship rohani, *Prayer room*, *Accountability group*, serta *Event & retreat platform*.
+
+### B. Portal Volunteer (Marketplace Pelayanan)
+* **Konsep:** Menghubungkan gereja lokal dengan relawan bersertifikasi melalui marketplace pelayanan.
+* **Fungsi:** Informasi lowongan dari gereja-gereja dan sistem pendaftaran bagi relawan berdasarkan tingkat kompetensi dan rekomendasi gereja.
+
+---
+
+## ⛪ 5. PORTAL MEDIA DAN LAYANAN GEREJA DIGITAL
+
+### A. Fitur Layanan Jemaat
+* **Prayer & Counseling:** Formulir permohonan doa dan konseling etis (mengikuti pedoman etika konseling).
+* **Church Info:** Informasi gereja, warta jemaat, dan akses *Live Streaming* ibadah.
+* **Donasi & Merchandise:** Portal pembayaran persepuluhan/donasi serta penjualan buku/barang rohani.
+
+### B. Portal Media
+* **Konten:** Berita Kristen, renungan harian, artikel teologi, podcast rohani, dan video devotionals.
+
+---
+
+## ⚙️ 6. ARSITEKTUR TEKNIS & UI/UX (PROMPT READY)
+
+### A. Hierarki Pengguna
+1. **Super Admin:** Manajemen ekosistem, lisensi gereja, analitik global, dan dashboard keamanan.
+2. **Admin Gereja:** Mengelola jemaat lokal, memantau progres belajar, dan memposting lowongan volunteer.
+3. **Pengajar/Mentor:** Mengelola materi kursus, menilai kuis/asesmen, dan moderasi forum.
+4. **Member (Siswa/Relawan):** Akses LMS, Bible Tools, pendaftaran pelayanan, dan tracking pertumbuhan iman.
+
+### B. Warna Palette (Digital Ministry)
+* **Primary:** *Deep Kingdom Blue* (#1A237E) - Otoritas teologis dan stabilitas.
+* **Secondary:** *Grace Gold* (#FFD700) - Lencana sertifikasi, pencapaian, dan gamifikasi.
+* **Accent:** *Spirit Teal* (#008080) - Komunitas dan fitur interaktif.
+* **Neutral:** *Off-White* (#FAFAFA) - Kenyamanan membaca Alkitab dalam waktu lama.
+
+---
+
+## 🚀 7. ROADMAP & GOVERNANCE
+
+### A. Roadmap Pengembangan
+* **Phase 1 (0–6 bln):** MVP LMS, modul Kids & Youth, komunitas dasar, Mobile web.
+* **Phase 2 (6–12 bln):** *Certification engine*, Bible Study Tools, Mobile App, AI Study Assistant.
+* **Phase 3 (12–24 bln):** Ekspansi internasional, *White-label* LMS untuk denominasi, integrasi Marketplace.
+
+### B. Etika & Keamanan
+* **Safeguarding:** Kebijakan perlindungan anak dan remaja (*Child protection policy*).
+* **Akuntabilitas:** Pengawasan standar doktrin oleh *Theological Advisory Board* dan transparansi pelaporan.
+
+### C. Metrik Keberhasilan (KPI)
+* **Spiritual:** Indikator pertumbuhan iman dan indeks kesehatan komunitas.
+* **Operasional:** MAU (Monthly Active Users), tingkat penyelesaian kursus, dan jumlah lulusan sertifikasi.

@@ -1,0 +1,333 @@
+/* ══════════════════════════════════════════
+   MINISTRYHUB — Volunteer Ministry Board
+   ══════════════════════════════════════════ */
+.mhub-page { min-height: 100vh; background: #f1f5f9; }
+
+/* ── Hero ── */
+.mhub-hero {
+  background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #3949ab 100%);
+  padding: 52px 24px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mhub-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=20&w=1400') center/cover;
+  opacity: 0.07;
+}
+.mhub-hero-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
+.mhub-hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.12); color: #fbbf24;
+  border: 1px solid rgba(251,191,36,0.3); border-radius: 100px;
+  padding: 5px 14px; font-size: 0.8rem; font-weight: 700;
+  margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.mhub-hero-title {
+  font-size: 2.2rem; font-weight: 900; color: #fff;
+  margin: 0 0 12px; font-family: 'Outfit', sans-serif; letter-spacing: -0.5px;
+}
+.mhub-hero-desc {
+  color: rgba(255,255,255,0.78); font-size: 1rem; line-height: 1.7; margin: 0 0 24px;
+}
+.mhub-hero-stats {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.mhub-stat { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+.mhub-stat strong { color: #fbbf24; font-size: 1.2rem; display: block; font-weight: 900; }
+.mhub-stat-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.25); }
+
+/* ── Main View Tabs ── */
+.mhub-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+  border-radius: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+  backdrop-filter: blur(8px);
+}
+.mhub-tab-btn {
+  flex: 1; padding: 10px; border: none; background: transparent; color: rgba(255,255,255,0.7);
+  font-size: 0.95rem; font-weight: 700; border-radius: 8px; cursor: pointer;
+  transition: all 0.2s; white-space: nowrap; font-family: 'Outfit', sans-serif;
+}
+.mhub-tab-btn.active {
+  background: #fff; color: #1e293b; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ── Filters ── */
+.mhub-filters {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 24px 0;
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+}
+.mhub-filters-inner {
+  display: flex; gap: 12px; margin-bottom: 12px; align-items: center;
+  max-width: 1200px; margin: 0 auto 12px;
+}
+.mhub-search {
+  flex: 1; display: flex; align-items: center; gap: 10px;
+  background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px;
+  padding: 10px 14px; color: #94a3b8;
+}
+.mhub-search input {
+  flex: 1; border: none; background: none; outline: none;
+  font-size: 0.9rem; color: #1e293b; font-family: inherit;
+}
+.mhub-search button {
+  background: none; border: none; cursor: pointer; color: #94a3b8;
+  padding: 0; display: flex;
+}
+.mhub-select {
+  padding: 10px 14px; background: #f8fafc;
+  border: 1.5px solid #e2e8f0; border-radius: 10px;
+  font-size: 0.875rem; color: #334155; font-family: inherit;
+  cursor: pointer; outline: none;
+}
+.mhub-role-chips {
+  display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px;
+  scrollbar-width: thin; max-width: 1200px; margin: 0 auto;
+}
+.mhub-role-chips::-webkit-scrollbar { height: 3px; }
+.mhub-role-chips::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 4px; }
+.mhub-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: 100px;
+  border: 1.5px solid #e2e8f0; background: #fff;
+  font-size: 0.8rem; font-weight: 600; color: #475569;
+  cursor: pointer; white-space: nowrap; transition: all 0.15s;
+  font-family: inherit;
+}
+.mhub-chip:hover { border-color: #1a237e; color: #1a237e; }
+.mhub-chip-icon { display: flex; align-items: center; }
+
+/* ── Main layout ── */
+.mhub-main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  align-items: start;
+}
+.mhub-results-info {
+  font-size: 0.82rem; color: #64748b; margin-bottom: 14px; font-weight: 500;
+}
+
+/* ── Vacancy Card ── */
+.mhub-card {
+  background: #fff; border-radius: 14px;
+  border: 1.5px solid #e2e8f0;
+  padding: 20px; margin-bottom: 12px;
+  cursor: pointer; transition: all 0.18s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.mhub-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); border-color: #c7d2fe; transform: translateY(-1px); }
+.mhub-card.selected { border-color: #3949ab; box-shadow: 0 0 0 3px rgba(57,73,171,0.1); }
+
+.mhub-card-top { display: flex; gap: 14px; margin-bottom: 10px; }
+.mhub-church-logo {
+  width: 52px; height: 52px; border-radius: 12px; object-fit: cover;
+  border: 1px solid #e2e8f0; flex-shrink: 0;
+}
+.mhub-card-info { flex: 1; }
+.mhub-card-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+.mhub-role-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 700;
+}
+.mhub-urgent-tag {
+  font-size: 0.72rem; font-weight: 700; color: #ef4444;
+}
+.mhub-card-title {
+  font-size: 1rem; font-weight: 800; color: #1e293b;
+  margin: 0 0 2px; font-family: 'Outfit', sans-serif;
+}
+.mhub-card-church { font-size: 0.82rem; font-weight: 600; color: #475569; margin-bottom: 2px; }
+.mhub-card-location {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.78rem; color: #94a3b8;
+}
+.mhub-card-desc {
+  font-size: 0.85rem; color: #64748b; line-height: 1.6;
+  margin: 0 0 12px;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.mhub-card-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+}
+.mhub-card-details {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.mhub-card-details span {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.78rem; color: #64748b;
+}
+.mhub-apply-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #1a237e; color: #fff;
+  border: none; border-radius: 8px; padding: 8px 16px;
+  font-size: 0.82rem; font-weight: 700; cursor: pointer;
+  transition: background 0.15s; font-family: inherit;
+  text-decoration: none; white-space: nowrap;
+}
+.mhub-apply-btn:hover { background: #283593; }
+
+/* Empty state */
+.mhub-empty {
+  text-align: center; padding: 60px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.mhub-empty h3 { font-size: 1.1rem; color: #334155; margin: 0; }
+.mhub-empty p { color: #94a3b8; margin: 0; }
+.mhub-empty button {
+  background: #1a237e; color: #fff; border: none; border-radius: 8px;
+  padding: 8px 20px; cursor: pointer; font-weight: 600; font-family: inherit;
+}
+
+/* ── Detail Panel ── */
+.mhub-detail {
+  position: sticky;
+  top: calc(64px + 110px);
+  background: #fff; border-radius: 16px;
+  border: 1.5px solid #e2e8f0;
+  padding: 24px; margin-left: 0;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  opacity: 0.3; transition: opacity 0.2s;
+}
+.mhub-detail.open { opacity: 1; }
+
+.mhub-detail-close {
+  position: absolute; top: 16px; right: 16px;
+  background: #f1f5f9; border: none; border-radius: 50%;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #64748b;
+}
+.mhub-detail-logo {
+  width: 64px; height: 64px; border-radius: 14px; object-fit: cover;
+  border: 1px solid #e2e8f0; margin-bottom: 12px; display: block;
+}
+.mhub-detail-role-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.mhub-detail-title {
+  font-size: 1.2rem; font-weight: 900; color: #1e293b;
+  margin: 0 0 6px; font-family: 'Outfit', sans-serif;
+}
+.mhub-detail-church {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 4px;
+}
+.mhub-detail-location {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.8rem; color: #94a3b8; margin-bottom: 16px;
+}
+.mhub-detail-stats {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.mhub-detail-stats > div {
+  display: flex; align-items: center; gap: 5px;
+  background: #f8fafc; border-radius: 8px; padding: 6px 12px;
+  font-size: 0.8rem; color: #475569;
+}
+.mhub-detail-urgent {
+  font-size: 0.8rem; font-weight: 700; color: #ef4444;
+  background: #fef2f2; border-radius: 8px; padding: 6px 12px;
+}
+.mhub-detail-desc {
+  font-size: 0.875rem; color: #475569; line-height: 1.7; margin: 0 0 16px;
+}
+.mhub-detail-req-title {
+  font-size: 0.85rem; font-weight: 700; color: #1e293b; margin: 0 0 10px;
+}
+.mhub-detail-req-list {
+  list-style: none; padding: 0; margin: 0 0 20px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.mhub-detail-req-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.85rem; color: #475569; line-height: 1.5;
+}
+.mhub-detail-req-list li svg { flex-shrink: 0; color: #22c55e; margin-top: 2px; }
+
+/* ── Volunteer Card Variations ── */
+.mhub-volunteer-avatar {
+  width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
+  border: 2px solid #e2e8f0; flex-shrink: 0;
+}
+.mhub-detail-avatar {
+  width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+  border: 3px solid #e2e8f0; margin-bottom: 16px; display: block;
+}
+.mhub-skills-list {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
+}
+.mhub-skill-badge {
+  background: #f1f5f9; color: #475569; font-size: 0.75rem;
+  padding: 4px 10px; border-radius: 6px; font-weight: 600;
+  border: 1px solid #e2e8f0;
+}
+.mhub-detail-skill-badge {
+  background: #f1f5f9; color: #334155; font-size: 0.8rem;
+  padding: 6px 12px; border-radius: 8px; font-weight: 600;
+  border: 1px solid #cbd5e1;
+}
+.mhub-detail-apply-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #1a237e; color: #fff;
+  border: none; border-radius: 10px; padding: 13px 20px;
+  font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  text-decoration: none; width: 100%; box-sizing: border-box;
+  transition: background 0.15s; margin-bottom: 10px;
+}
+.mhub-detail-apply-btn:hover { background: #283593; }
+.mhub-detail-signup-link {
+  display: block; text-align: center;
+  font-size: 0.82rem; color: #64748b; text-decoration: none;
+}
+.mhub-detail-signup-link:hover { color: #1a237e; text-decoration: underline; }
+
+.mhub-detail-empty {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; padding: 40px 20px; text-align: center;
+}
+.mhub-detail-empty p { font-size: 0.875rem; color: #94a3b8; margin: 0; }
+
+/* ── CTA Banner ── */
+.mhub-cta {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-top: 1px solid #fbbf24;
+  display: flex; align-items: center; gap: 20px;
+  padding: 28px 24px; flex-wrap: wrap; justify-content: center;
+}
+.mhub-cta > div { flex: 1; min-width: 240px; }
+.mhub-cta h3 { font-size: 1.05rem; font-weight: 800; color: #78350f; margin: 0 0 4px; }
+.mhub-cta p { font-size: 0.875rem; color: #92400e; margin: 0; }
+.mhub-cta-btn {
+  background: #d97706; color: #fff; text-decoration: none;
+  padding: 11px 24px; border-radius: 10px;
+  font-weight: 700; font-size: 0.9rem; white-space: nowrap;
+  transition: background 0.15s; flex-shrink: 0;
+}
+.mhub-cta-btn:hover { background: #b45309; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mhub-main { grid-template-columns: 1fr; padding: 16px; }
+  .mhub-detail { position: static; max-height: none; opacity: 1; margin-top: 16px; display: none; }
+  .mhub-detail.open { display: block; }
+  .mhub-hero-title { font-size: 1.7rem; }
+}

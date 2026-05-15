@@ -1,0 +1,98 @@
+/* ══════════════════════════════════════════
+   ACARA PAGE
+   ══════════════════════════════════════════ */
+.acara-page { min-height: 100vh; background: var(--color-neutral-bg); }
+
+/* Hero */
+.acara-hero {
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 60%, #388e3c 100%);
+  padding: 56px 24px 44px; text-align: center; position: relative; overflow: hidden;
+}
+.acara-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=30&w=1400') center/cover no-repeat;
+  opacity: 0.1;
+}
+.acara-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+.acara-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 100px;
+  padding: 5px 14px; font-size: 0.8rem; font-weight: 600;
+  margin-bottom: 16px; letter-spacing: 0.04em;
+}
+.acara-hero-title {
+  font-size: 2.1rem; font-weight: 800; color: #fff;
+  margin: 0 0 12px; font-family: 'Outfit', sans-serif;
+}
+.acara-hero-desc { color: rgba(255,255,255,0.8); font-size: 1rem; margin: 0; }
+
+/* Tabs */
+.acara-tabs {
+  display: flex; background: #fff;
+  border-bottom: 2px solid var(--color-neutral-border); padding: 0 24px;
+  position: sticky; top: 64px; z-index: 10;
+}
+.acara-tab-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 14px 20px; background: none; border: none;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  font-size: 0.92rem; font-weight: 600; color: var(--color-text-secondary);
+  cursor: pointer; transition: all 0.2s; font-family: inherit; white-space: nowrap;
+}
+.acara-tab-btn:hover { color: #2e7d32; }
+.acara-tab-btn.active { color: #2e7d32; border-bottom-color: #2e7d32; }
+
+/* Content */
+.acara-content { max-width: 1100px; margin: 0 auto; padding: 32px 24px 64px; }
+.acara-section-info { margin-bottom: 20px; }
+.acara-section-count { font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 500; }
+
+/* Grid */
+.acara-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+
+/* Event Card */
+.acara-event-card {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--color-neutral-border);
+  transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column;
+}
+.acara-event-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+
+.acara-event-thumb { position: relative; height: 200px; overflow: hidden; }
+.acara-event-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.acara-event-card:hover .acara-event-thumb img { transform: scale(1.04); }
+.acara-status-badge {
+  position: absolute; top: 12px; left: 12px;
+  color: #fff; font-size: 0.75rem; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px; letter-spacing: 0.04em;
+}
+
+.acara-event-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.acara-event-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.acara-tag {
+  background: var(--color-neutral-bg); color: var(--color-text-secondary);
+  font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 100px;
+}
+.acara-event-title {
+  font-size: 1.05rem; font-weight: 800; color: var(--color-primary-dark);
+  margin: 0 0 8px; font-family: 'Outfit', sans-serif; line-height: 1.4;
+}
+.acara-event-desc {
+  font-size: 0.875rem; color: var(--color-text-secondary);
+  line-height: 1.6; margin: 0 0 16px; flex: 1;
+}
+.acara-event-meta { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.acara-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--color-text-secondary); }
+.acara-meta-item svg { flex-shrink: 0; color: var(--color-primary); }
+
+.acara-event-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.acara-price { font-weight: 800; font-size: 1rem; }
+.acara-register-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--color-primary); color: #fff;
+  border: none; border-radius: 8px; padding: 9px 18px;
+  font-size: 0.875rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s; font-family: inherit;
+}
+.acara-register-btn:hover { background: var(--color-primary-light); }

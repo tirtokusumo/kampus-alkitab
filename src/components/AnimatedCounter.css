@@ -1,0 +1,14 @@
+.animated-counter {
+  display: inline-block;
+  cursor: default;
+  transition: color 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+.animated-counter:hover {
+  color: var(--land-accent, #f59e0b);
+  transform: scale(1.05);
+}
+
+/* Optional: add a subtle glow on active counting? */
+/* We could add a class via JS, but let's keep it simple for now as requested. */
