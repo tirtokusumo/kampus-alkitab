@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useCallback, useEffect } from 'react';
-import { authService } from '../services/api';
+import { supabase } from '../utils/supabaseClient';
 
 const AuthContext = createContext(null);
 
@@ -7,52 +7,66 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Periksa apakah user sudah login berdasarkan token
+  // Periksa sesi dari Supabase saat web pertama kali dimuat
   useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('kampus_token');
-      if (token) {
-        try {
-          const data = await authService.getMe();
-          setUser(data.user);
-        } catch (e) {
-          console.error('Session expired', e);
-          localStorage.removeItem('kampus_token');
-        }
-      }
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
       setIsLoading(false);
-    };
-    checkAuth();
+    });
+
+    // Dengarkan jika ada perubahan (misal user login / logout di tab lain)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setIsLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const login = async (email, password) => {
     try {
-      const data = await authService.login(email, password);
-      localStorage.setItem('kampus_token', data.token);
-      // Backend kembalikan { user, token }
-      setUser(data.user);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) throw error;
       return { success: true, user: data.user };
     } catch (error) {
-      return { success: false, error: error.message };
+      // Ubah pesan error bahasa inggris Supabase jadi lebih ramah
+      let msg = error.message;
+      if (msg === 'Invalid login credentials') msg = 'Email atau password salah';
+      return { success: false, error: msg };
     }
   };
 
   const register = async (name, email, password) => {
     try {
-      const data = await authService.register(name, email, password);
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name,
+            role: 'user' // Default role
+          }
+        }
+      });
+      if (error) throw error;
       return { success: true, data };
     } catch (error) {
-      return { success: false, error: error.message };
+      let msg = error.message;
+      if (msg === 'User already registered') msg = 'Email ini sudah terdaftar';
+      return { success: false, error: msg };
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('kampus_token');
+  const logout = async () => {
+    await supabase.auth.signOut();
   };
 
   const isAdmin = useCallback(() => {
-    return user?.role === 'admin' || user?.role === 'superadmin';
+    // Mengecek apakah di metadata user terdapat role admin
+    return user?.user_metadata?.role === 'admin' || user?.user_metadata?.role === 'superadmin';
   }, [user]);
 
   return (
