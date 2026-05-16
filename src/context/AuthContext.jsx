@@ -32,9 +32,12 @@ export const AuthProvider = ({ children }) => {
       if (error) throw error;
       return { success: true, user: data.user };
     } catch (error) {
-      // Ubah pesan error bahasa inggris Supabase jadi lebih ramah
       let msg = error.message;
-      if (msg === 'Invalid login credentials') msg = 'Email atau password salah';
+      if (msg === 'Invalid login credentials') {
+        msg = 'Email atau password salah';
+      } else if (msg.includes('Email not confirmed')) {
+        msg = 'Email Anda belum dikonfirmasi. Silakan periksa kotak masuk email Anda.';
+      }
       return { success: false, error: msg };
     }
   };
@@ -47,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         options: {
           data: {
             full_name: name,
-            role: 'user' // Default role
+            role: 'member' // Align with database schema enum
           }
         }
       });
@@ -55,7 +58,11 @@ export const AuthProvider = ({ children }) => {
       return { success: true, data };
     } catch (error) {
       let msg = error.message;
-      if (msg === 'User already registered') msg = 'Email ini sudah terdaftar';
+      if (msg === 'User already registered') {
+        msg = 'Email ini sudah terdaftar';
+      } else if (msg.includes('Database error saving new user')) {
+        msg = 'Gagal menyimpan profil. Hubungi admin.';
+      }
       return { success: false, error: msg };
     }
   };
