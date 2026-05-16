@@ -185,10 +185,15 @@
   }
   
   .landing-mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 102;
     background: white;
-    border-radius: 4px;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
   }
 
   .landing-nav-menu-wrapper {
@@ -201,12 +206,13 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 2rem 1.5rem;
-    transform: translateY(-150%);
+    transform: translateY(-100%); /* Less drastic translation */
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1; /* goes below the navbar content, but nav is sticky */
+    transition: all 0.3s ease-in-out;
+    z-index: 99; /* Fix for being hidden behind content */
     overflow-y: auto;
+    border-top: 1px solid #f1f5f9;
   }
 
   .landing-nav-menu-wrapper.open {
