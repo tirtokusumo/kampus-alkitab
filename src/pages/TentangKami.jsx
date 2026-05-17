@@ -365,7 +365,7 @@ const TentangKami = () => {
           <div>
             <div className="tentang-stats-row">
               {[
-                { num: '12.000+', label: 'Murid Aktif', icon: <Users size={24} color="#3b82f6" /> },
+                { num: '785+', label: 'Murid Aktif', icon: <Users size={24} color="#3b82f6" /> },
                 { num: '150+', label: 'Kelas Tersedia', icon: <BookOpen size={24} color="#f59e0b" /> },
                 { num: '45+', label: 'Pengajar Expert', icon: <Award size={24} color="#8b5cf6" /> },
                 { num: '98%', label: 'Tingkat Kepuasan', icon: <Star size={24} color="#22c55e" fill="#22c55e" /> },
