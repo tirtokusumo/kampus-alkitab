@@ -41,5 +41,5 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ # Folder hasil build Vite yang akan diupload
-        server-dir: ./public_html/ # Folder tujuan di Hostinger
+        server-dir: ./ # Folder tujuan di Hostinger (root FTP)
         dangerous-clean-slate: false # Set ke true JIKA Anda ingin menghapus file lama di server yang tidak ada di lokal
