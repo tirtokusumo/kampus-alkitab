@@ -3,7 +3,7 @@ name: Deploy React Vite to Hostinger
 on:
   push:
     branches:
-      - main # Jalankan otomatis setiap ada push ke branch 'main'
+      - main
 
 jobs:
   web-deploy:
@@ -11,47 +11,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout kode dari GitHub
     - name: Get latest code
       uses: actions/checkout@v4
       
-    # 2. Persiapkan Node.js
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Gunakan versi Node.js terbaru/stabil
+        node-version: '20'
         cache: 'npm'
 
-    # 3. Instal semua dependencies
     - name: Install dependencies
-      run: npm ci # Gunakan npm ci untuk instalasi yang lebih bersih dan cepat dari package-lock.json
+      run: npm ci
 
-    # 4. Build aplikasi React (Vite)
     - name: Build project
       run: npm run build
       env:
         VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
         VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-      
-    # 5. Debug: Verify FTP credentials are correct
-    - name: Debug FTP settings
+
+    - name: Deploy via FTP with full debug
       run: |
-        echo "FTP_SERVER length: ${#FTP_SERVER}"
-        echo "FTP_SERVER first 4 chars: ${FTP_SERVER:0:4}"
-        echo "FTP_USERNAME length: ${#FTP_USERNAME}"
-        echo "FTP_USERNAME first 15 chars: ${FTP_USERNAME:0:15}"
+        sudo apt-get install -y lftp
+        
+        echo "=== STEP 1: Login and check where we land ==="
+        lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<EOF
+        set ssl:verify-certificate no
+        set ftp:passive-mode yes
+        debug 3
+        pwd
+        ls
+        echo "=== Trying to enter public_html ==="
+        cd public_html
+        pwd
+        ls -la index.html
+        echo "=== Now uploading files ==="
+        mirror --reverse --delete --verbose ./dist/ .
+        echo "=== Upload complete! Verifying ==="
+        ls -la index.html
+        bye
+        EOF
       env:
         FTP_SERVER: ${{ secrets.FTP_SERVER }}
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-
-    # 6. Upload hasil build (folder 'dist') ke Hostinger via FTP
-    - name: Sync files to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: public_html/
-        log-level: verbose
-        dangerous-clean-slate: false
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
