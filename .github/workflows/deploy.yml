@@ -33,13 +33,25 @@ jobs:
         VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
         VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       
-    # 5. Upload hasil build (folder 'dist') ke Hostinger via FTP
+    # 5. Debug: Verify FTP credentials are correct
+    - name: Debug FTP settings
+      run: |
+        echo "FTP_SERVER length: ${#FTP_SERVER}"
+        echo "FTP_SERVER first 4 chars: ${FTP_SERVER:0:4}"
+        echo "FTP_USERNAME length: ${#FTP_USERNAME}"
+        echo "FTP_USERNAME first 15 chars: ${FTP_USERNAME:0:15}"
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+
+    # 6. Upload hasil build (folder 'dist') ke Hostinger via FTP
     - name: Sync files to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/ # Folder hasil build Vite yang akan diupload
-        server-dir: public_html/ # Folder tujuan di Hostinger
-        dangerous-clean-slate: false # Set ke true JIKA Anda ingin menghapus file lama di server yang tidak ada di lokal
+        local-dir: ./dist/
+        server-dir: public_html/
+        log-level: verbose
+        dangerous-clean-slate: false
