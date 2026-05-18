@@ -375,7 +375,7 @@ const Landing = () => {
       <section className="landing-stats">
         <div className="landing-stats-inner">
           {[
-            { num: '785+', lbl: 'Murid Aktif', icon: <Users size={22} /> },
+            { num: '856+', lbl: 'Murid Aktif', icon: <Users size={22} /> },
             { num: '150+', lbl: 'Kelas Tersedia', icon: <BookOpen size={22} /> },
             { num: '45+', lbl: 'Pengajar Expert', icon: <Award size={22} /> },
             { num: '98%', lbl: 'Tingkat Kepuasan', icon: <Star size={22} /> },
